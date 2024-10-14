@@ -27,22 +27,23 @@ let store = {
                 { id: 6, name: "Kirill" }
             ]
 
-        }
+        },
+        sidebar: {}
     },
+    _callSubscriber() {
+        console.log('it was changed')
+    },
+
     getState() {
         return this._state;
     },
-    _callSubscriber() {
-        debugger;
-        console.log('it was changed')
-    },
-    _subscribe(observer) {
+    subscribe(observer) {
 
         this._callSubscriber = observer;
 
     },
     dispatch(action) {
-        if (action.type === "ADD POST") {
+        if (action.type === "ADD-POST") {
             let newPost = {
                 id: 0,
                 message: this._state.profilePage.newPostText,
