@@ -1,7 +1,7 @@
 import React from "react";
 import s from './Dialogs.module.css';
 import { NavLink } from "react-router-dom";
-import { sendMessageCreator, updateNewMessageCreator } from "../../Redux/State";
+import { sendMessageCreator, updateNewMessageCreator } from "../../Redux/messageReducer";
 
 
 const DialogItem = (props) => {
@@ -30,6 +30,7 @@ export default function Dialogs(props) {
     const newMessageText =state.newMessageText
 
   let onSendMessageClick = () => {
+  
      props.store.dispatch(sendMessageCreator())
   }
   let onNewMessageChange= (e) => {

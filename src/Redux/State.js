@@ -1,8 +1,7 @@
-const ADD_POST = "ADD-POST"
-const UPDATE_POST_TEXT = "UPDATE-NEW-POST-TEXT"
+import messageReducer from "./messageReducer"
+import profileReducer from "./profileReducer"
+import sidebarReducer from "./sidebarReducer"
 
-const UPDATE_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT"
-const SEND_MESSAGE = "SEND-MESSAGE"
 let store = {
     _state: {
         profilePage: {
@@ -44,23 +43,13 @@ let store = {
     },
 
     dispatch(action) {
-     
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.messagePage = messageReducer(this._state.messagePage, action);
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+        this._callSubscriber(this._state);
+
     }
 }
-
-export const addPostActionCreator = () => ({ type: ADD_POST })
-
-export const updateNewPostText = (text) => ({
-    type: UPDATE_POST_TEXT,
-    newText: text
-})
-
-export const sendMessageCreator = () => ({ type: SEND_MESSAGE })
-
-export const updateNewMessageCreator = (body) => ({
-    type: UPDATE_MESSAGE_TEXT,
-    body: body
-})
 
 export default store;
 window.store = store;
