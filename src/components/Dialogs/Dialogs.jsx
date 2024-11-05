@@ -23,7 +23,7 @@ return (
 
 export default function Dialogs(props) {
 
-    let state=props.store.getState().messagePage;
+    let state=props.messagePage;
 
     const dialogsElem = state.dialogsData.map((d) => <DialogItem path={d.id} name={d.name}/>)
     const  mesElem =state.mesData.map(m => <MessageItem mes={m.mes}/>)
@@ -31,11 +31,11 @@ export default function Dialogs(props) {
 
   let onSendMessageClick = () => {
   
-     props.store.dispatch(sendMessageCreator())
+     props.sendMessageCreator()
   }
   let onNewMessageChange= (e) => {
 let body = e.target.value
-props.store.dispatch(updateNewMessageCreator(body))  
+props.updateNewMessageCreator(body)
 }
     return (
         <div className={s.dialogs}>

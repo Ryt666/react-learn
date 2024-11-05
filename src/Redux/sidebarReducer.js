@@ -1,4 +1,6 @@
-export default function sidebarReducer(state, action){
+let initialState = {}
+
+export default function sidebarReducer(state=initialState, action){
 
 
     return state;
