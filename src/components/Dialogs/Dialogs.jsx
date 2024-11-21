@@ -25,17 +25,17 @@ export default function Dialogs(props) {
 
     let state=props.messagePage;
 
-    const dialogsElem = state.dialogsData.map((d) => <DialogItem path={d.id} name={d.name}/>)
-    const  mesElem =state.mesData.map(m => <MessageItem mes={m.mes}/>)
+    const dialogsElem = state.dialogsData.map((d) => <DialogItem path={d.id} key={d.id} name={d.name}/>)
+    const  mesElem =state.mesData.map(m => <MessageItem mes={m.mes } key={m.id}/>)
     const newMessageText =state.newMessageText
 
   let onSendMessageClick = () => {
   
-     props.sendMessageCreator()
+     props.sendMessage()
   }
   let onNewMessageChange= (e) => {
-let body = e.target.value
-props.updateNewMessageCreator(body)
+     let body = e.target.value
+      props.updateNewMessage(body)
 }
     return (
         <div className={s.dialogs}>

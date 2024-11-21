@@ -17,16 +17,21 @@ let initialState = {
         { id: 6, name: "Kirill" }
     ]
 }
-export default function messageReducer(state =initialState, action) {
+export default function messageReducer(state = initialState, action) {
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_TEXT:
-            state.newMessageText = action.body;
-            return state;
+            return {
+                ...state,
+                newMessageText: action.body
+            };
         case SEND_MESSAGE:
             let body = state.newMessageText;
-            state.newMessageText = '';
-            state.mesData.push({ id: 6, mes: body });
-            return state;
+            return {
+                ...state,
+                newMessageText: '',
+                mesData: [...state.mesData, { id: 6, mes: body }]
+            };
+            
         default:
             return state;
     }

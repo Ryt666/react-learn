@@ -15,29 +15,32 @@ import { connect } from 'react-redux';
 //         let onPostChange = (text) => {
 //           store.dispatch(updateNewPostTextActionCreator(text))
 //         }
-//         return <MyPosts addPost={addPost} updateNewPostText={onPostChange} postData={state.profilePage.postData} newPostText={state.profilePage.newPostText} />
+//         return <MyPosts addPost={addPost} 
+//                         updateNewPostText={onPostChange} 
+//                         postData={state.profilePage.postData} 
+//                         newPostText={state.profilePage.newPostText} />
 //       }
 //       }
 //     </StoreContext.Consumer>
 //   )
 // }
 
-let mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
   return {
     postData: state.profilePage.postData,
-    newPostText: state.profilePage.newPostText
+   newPostText: state.profilePage.newPostText
 
   }
 }
 
-let mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     addPost: () => {
       dispatch(addPostActionCreator())
     },
-    onPostChange: (text) => {
+    updateNewPostText: (text) => {
       let action = updateNewPostTextActionCreator(text);
-      dispatch(updateNewPostTextActionCreator(action))
+      dispatch(action)
     }
   }
 

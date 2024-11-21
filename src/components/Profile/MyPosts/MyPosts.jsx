@@ -27,7 +27,7 @@ let onPostChange = () => {
         <button onClick={addPost}>Add post</button>
 
       </div>
-      <div className={s.posts}>
+      <div className={s.postData}>
      {postElem}
       </div>
     </div>
