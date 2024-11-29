@@ -3,15 +3,17 @@ import profileReducer from './profileReducer';
 import messageReducer from './messageReducer';
 import sidebarReducer from './sidebarReducer';
 import { configureStore } from '@reduxjs/toolkit';
+import usersReducer from './usersReducer';
 
 let reducers = combineReducers({
     profilePage: profileReducer, 
     messagePage: messageReducer,
-    sidebar: sidebarReducer  
+    sidebar: sidebarReducer,
+    usersPage: usersReducer
 })
-let store = configureStore({
+let store = configureStore({ 
     reducer: reducers
-});
+}); // the same as createStore()
 
 window.store = store;
 
